@@ -1,0 +1,19 @@
+﻿<div class="navbar navbar-fixed-top">
+	<div class="navbar-inner">
+		<div class="container">
+			<ul class="nav nav-pills pull-right">
+				<li class="@if (ViewBag.Name == "Home")
+                    {<text>active</text>}"><a href="@Url.Action("Index", "Home")">Home</a></li>
+				<li class="@if (ViewBag.Name == "MyTest-TestPage")
+                        {<text>active</text>}">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Some Actions under My Test<b class="caret"></b></a>
+					<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+						<li><a href="@Url.Action("Index", "MyTest")">Index</a></li>
+						<li><a href="@Url.Action("Wizard", "MyTest")">Wizard</a></li>
+						<li><a href="@Url.Action("Action3", "MyTest")">Action 3</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>

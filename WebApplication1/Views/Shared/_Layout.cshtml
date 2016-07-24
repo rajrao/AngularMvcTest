@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width" />
+	<title>@ViewBag.Title</title>
+	@Styles.Render("~/Content/css")
+	@Styles.Render("~/Content/themes/base/css")
+	<link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+	<link href="~/Content/loading-placeholder.css" rel="stylesheet" media="screen">
+	<link href="~/Content/Layout.css" rel="stylesheet" media="screen">
+	<base href="~/">
+</head>
+<body data-ng-app="appMain">
+	@Html.Partial("~/Views/Shared/_TopBar.cshtml")
+	<div class="wrapper">
+		<div class="container" style="padding-top: 15px;">
+			<div class="content-wrapper main-content clear-fix">
+				<div style="margin-top: 35px;">
+					<a href="@Url.Action("Index", "Home")">
+						Home
+					</a>
+				</div>
+				<section id="mainbody">
+					@RenderBody()
+				</section>
+			</div>
+		</div>
+		<div class="push"></div>
+	</div>
+	@Html.Partial("~/Views/Shared/_BottomBar.cshtml")
+
+	<script type="text/javascript">
+		window.MyTestSite = {};
+		(function (mts) {
+			var rootPath = '';
+			mts.rootPath = rootPath;
+		}(window.MyTestSite));
+		window.MyTestSite.rootPath = '@Url.Content("~")';
+	</script>
+
+	<script src="~/Scripts/angular.js"></script>
+	<script src="~/Scripts/angular-route.js"></script>
+	<script src="~/Scripts/angular-animate.js"></script>
+
+	@Scripts.Render("~/bundles/modernizr")
+	@Scripts.Render("~/bundles/jquery")
+	@Scripts.Render("~/bundles/jqueryui")
+	@Scripts.Render("~/bundles/bootstrap")
+
+	<script src="~/Scripts/angular-ui/ui-bootstrap-tpls.js"></script>
+	<script src="@Url.Content("~/Angular/validation.js")" type="text/javascript"></script>
+	<script src="@Url.Content("~/Angular/App.js")" type="text/javascript"></script>
+
+	@RenderSection("scripts", required: false)
+	<script type="text/javascript">
+		@RenderSection("footerScript", required: false)
+	</script>
+	
+	
+	
+	@RenderSection("footer", required: false)
+
+
+</body>
+</html>

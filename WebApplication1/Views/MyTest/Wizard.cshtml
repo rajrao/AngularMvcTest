@@ -1,0 +1,26 @@
+﻿@model WebApplication1.Models.WizardData
+@{
+	ViewBag.Title = "Wizard Page";
+	ViewBag.Name = "Wizard-Page";
+}
+@section scripts
+{
+	<script src="@Url.Content("~/Angular/Models/WizardDataModel.js")" type="text/javascript"></script>
+	<script src="@Url.Content("~/Angular/Controllers/WizardViewModel.js")" type="text/javascript"></script>
+}
+
+@section footer
+{
+	<div>Wizard Page</div>
+}
+@section footerScript
+{
+	angular.bootstrap(document.getElementById('wizardDiv'),['wizard']);
+}
+
+<div ng-data-app="wizard" data-ng-controller="WizardViewModel" id="wizardDiv">
+	<br />
+	@Html.Partial("~/Views/Shared/_ValidationErrors.cshtml")
+	<br />
+	<div ng-view></div>
+</div>

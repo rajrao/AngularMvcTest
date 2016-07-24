@@ -1,0 +1,54 @@
+﻿@model WebApplication1.Models.TestData
+@{
+	ViewBag.Title = "My Test Page Login";
+	ViewBag.Name = "MyTest-TestPage";
+}
+@section scripts
+{
+	<script src="@Url.Content("~/Angular/Models/MyTestTestDataModel.js")" type="text/javascript"></script>
+	<script src="@Url.Content("~/Angular/Controllers/MyTestTestViewModel.js")" type="text/javascript"></script>
+}
+
+<div data-ng-controller="MyTestTestViewModel" ng-init="myTestDataModel.IntitialDataFromServer = '@Model.IntitialDataFromServer'">
+	<br />
+	@Html.Partial("~/Views/Shared/_ValidationErrors.cshtml")
+	<br />
+
+	<p class="input-group" style="width: 400px;">
+		<span class="input-group-addon" style="width: 140px; text-align: left;">My Name:</span>
+		<input type="text" class="form-control" ng-model="myTestDataModel.myName" placeholder="My Name" />
+	</p>
+	<p class="input-group" style="width: 400px;">
+		<span class="input-group-addon" style="width: 140px; text-align: left;">Some More String Data:</span>
+		<input type="text" class="form-control" ng-model="myTestDataModel.someMoreStringData" placeholder="some more string data" />
+	</p>
+	<hr style="width: 415px; text-align: left;" />
+	<p>
+		<button type="button" class="btn btn-info" ng-click="doWork()">Do Some Work</button>
+		<div ng-switch on="myTestDataModel.result">
+			<div ng-switch-when="true">
+				Success!
+			</div>
+			<div ng-switch-when="false">
+				failed!
+			</div>
+			<div ng-switch-default>
+				Nothing has happened. Do some work!
+			</div>
+		</div>
+		<div>{{myTestDataModel.result === 'true' ? 'true' : 'false'}}</div>
+
+
+		<div>
+			{{myTestDataModel.myName}} {{myTestDataModel.someMoreStringData}} {{myTestDataModel.result}} {{myTestDataModel.IntitialDataFromServer}}
+		</div>
+	</p>
+
+</div>
+
+
+
+@section footer
+{
+	<div>My Test Index Page</div>
+}
